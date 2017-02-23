@@ -11,9 +11,8 @@ d3.csv("data.csv", function(error, students) {
 //read in the data
   if (error) return console.warn(error);
      students.forEach(function(d) {
-      d.price = +d.price;
-      d.tValue = +d.tValue;
-      d.vol = +d.vol;
+      d.Walc = +d.Walc;
+      d.absenses = +d.absenses;
   });
 //dataset is the full dataset -- maintain a copy of this at all times
   dataset = students;
@@ -59,11 +58,11 @@ var x = d3.scaleLinear()
         .range([0, w]);
 
 var y = d3.scaleLinear()
-        .domain([0, 40])
+        .domain([0, 30])
         .range([h, 0]);
 
 var xAxis = d3.axisBottom()
-    .ticks(4)
+    .ticks(5)
     .scale(x);
 
 chart.append("g")
@@ -87,6 +86,7 @@ chart2.append("g")
       .text("Price");
 
 var yAxis = d3.axisLeft()
+    .ticks(8)
     .scale(y);
 
 chart.append("g")
@@ -97,7 +97,7 @@ chart.append("g")
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("True Value");
+      .text("Number of Absenses");
 
 chart2.append("g")
    .attr("class", "axis")
@@ -107,7 +107,45 @@ chart2.append("g")
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("True Value");
+      .text("Self Rank of the Student's Weekend Drinkings");
+
+
+
+var x2 = d3.scaleLinear()
+    .domain([0, 5])
+    .rangeRound([0, width]);
+
+var y2 = d3.scaleLinear()
+    .range([height, 0]);
+
+var histogram = d3.histogram()
+    .value(function(d) { return d.Walc; })
+    .domain(x2.domain())
+    .thresholds(x2.ticks(5));
+
+chart2.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x2));
+
+d3.csv("data.csv", function(error, data) {
+  if (error) throw error;
+
+  var bins = histogram(data);
+
+  y.domain([0, d3.max(bins, function(d) { return d.length; })]);
+
+  var bar = chart2.selectAll(".bar")
+      .data(bins)
+      .enter().append("g")
+      .attr("class", "bar")
+      .attr("transform", function(d) { return "translate(" + x2(d.x0) + "," + y2(d.length) + ")"; });
+
+  bar.append("rect")
+      .attr("x", 1)
+      .attr("width", function(d) { return x2(d.x1) - x2(d.x0) - 1; })
+      .attr("height", function(d) { return h - y2(d.length); });
+});
 
 
 
@@ -117,22 +155,21 @@ function drawVis(dataset) { //draw the circiles initially and on each interactio
      .data(dataset);
 
   circle
-        .attr("cx", function(d) { return x(d.price);  })
-        .attr("cy", function(d) { return y(d.tValue);  })
+        .attr("cx", function(d) { return x(d.Walc);  })
+        .attr("cy", function(d) { return y(d.absenses);  })
         .style("fill", function(d) { return col(d.Mjob); });
 
   circle.exit().remove();
 
   circle.enter().append("circle")
-        .attr("cx", function(d) { return x(d.price);  })
-        .attr("cy", function(d) { return y(d.tValue);  })
+        .attr("cx", function(d) { return x(d.Walc);  })
+        .attr("cy", function(d) { return y(d.absenses);  })
         .attr("r", 4)
         .style("stroke", "black")
      //.style("fill", function(d) { return colLightness(d.vol); })
          .style("fill", function(d) { return col(d.Mjob); })
          .style("opacity", 0.5);
 }
-
 
 function filterType(mytype) {
   var res = patt.test(mytype); 
@@ -146,22 +183,11 @@ function filterType(mytype) {
   }
 }
 
-function filterGender(mytype) {
-  var res = patt.test(mytype); 
-  if(res){ 
-    drawVis(dataset); 
-  }else{
-    var ndata = dataset.filter(function(d) { 
-      return d['sex'] == mytype;
-  }); 
-    drawVis(ndata); 
-  }
-}
-
 function filterAge(values){ 
   var toVisualize = dataset.filter(function(d) {
     return d['age'] >= values[0]  && d['age'] < values[1] 
   }); 
   drawVis(toVisualize); 
 }
+
 
