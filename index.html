@@ -1,83 +1,56 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-
-body {
-  font: 11px sans-serif;
-}
-
-.axis line,
-.axis text {
-  font: 11px sans-serif;
-}
-.axis path {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-
-</style>
 <body>
-<link href="style.css" rel="stylesheet">
-<script src="https://d3js.org/d3.v4.min.js"></script>
- <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-<div id="layout">
-  <div id="title">
-    <p> Title </p>
-  </div>
-  <div id="visualization">
-    <svg class="chart"></svg>
-    <svg class="chart2"></svg>
-    <script src="script.js"></script>
-     </div>
-     <div id="controls">
-      <h1>Filters</h1>
-      <!--label for the type dropdown-->
-      <label for="type">Type:</label>
-      <input type="text" id="mytype" readonly style="border:0; color:#f6931f; font-weight:bold;">
-      <br> 
-        <select id= "myselectform">
-            <option value="all">All</option> 
-            <option value="at_home">At Home</option>
-            <option value="health">Health</option> 
-            <option value="services">Services</option> 
-            <option value="teacher">Teacher</option> 
-            <option value="other">Other</option> 
-          </select>
-        <br>
-        <label for="type">Gender:</label>
-        <input type="text" id="gender" readonly style="border:0; color:#f6931f; font-weight:bold;">
-        <br>
-            <select id= "genderselectform">
-              <option value="all">All</option> 
-              <option value="F">Female</option>
-              <option value="M">Male</option> 
-            </select>
-      <script>
-        document.getElementById("myselectform").onchange = function(){ filterType(this.value); } 
-        document.getElementById("genderselectform").onchange = function(){ filterGender(this.value); } 
-      </script>
-      <div id="volume" class="slider-range"></div> 
-      <label for="volumeamount">Age</label> 
-      <input type="text" id="volumeamount" readonly style="border:0; color:#f6931f;font-weight:bold;">
-      <script>
-      $(function() { 
-        $( "#volume" ).slider({ 
-          range: true, 
-          min: 15, 
-          max: 20, 
-          values: [ 15, 20 ], 
-          slide: function( event, ui ) { 
-            $( "#volumeamount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] ); filterAge(ui.values); }  }); 
-        $( "#volumeamount" ).val( $( "#volume" ).slider( "values", 0 ) + " - " + $( "#volume" ).slider( "values", 1 ) );   });
-      </script>
-    </div>
-</div>
-
-
+   <link href="style.css" rel="stylesheet">
+   <script src="https://d3js.org/d3.v4.min.js"></script>
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+     <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+   <div id="layout">
+      <div id="title">
+         <p> Alcohol Sales and Workers in the US </p>
+      </div>
+      <div id="visualization">
+         <svg class="chart1" width="800" height="500"></svg>
+         <hr>
+         <svg class = "chart2" width="800" height="500"></svg>
+         <script src="script.js"></script>
+      </div>
+      <div id="controls">
+         <h1>Filters</h1>
+         <!--check list for the month filter-->
+         <h2><label for="type">Month:</label></h2>
+         <label><input id="all" type='checkbox' value="all" checked onchange='filterMonth(this.value)'>All</label>
+         <br>
+         <label><input id="Jan" type='checkbox' value="Jan" onchange='filterMonth(this.value)'>January</label>
+         <br>
+         <label><input id="Feb" type='checkbox' value="Feb" onchange='filterMonth(this.value)'>February</label>
+         <br>
+         <label><input id="Mar" type='checkbox' value="Mar" onchange='filterMonth(this.value)'>March</label>
+         <br>
+         <label><input id="Apr" type='checkbox' value="Apr" onchange='filterMonth(this.value)'>April</label>
+         <br>
+         <label><input id="May" type='checkbox' value="May" onchange='filterMonth(this.value)'>May</label>
+         <br>
+         <label><input id="Jun" type='checkbox' value="Jun" onchange='filterMonth(this.value)'>June</label>
+         <br>
+         <label><input id="Jul" type='checkbox' value="Jul" onchange='filterMonth(this.value)'>July</label>
+         <br>
+         <label><input id="Aug" type='checkbox' value="Aug" onchange='filterMonth(this.value)'>August</label>
+         <br>
+         <label><input id="Sep" type='checkbox' value="Sep" onchange='filterMonth(this.value)'>September</label>
+         <br>
+         <label><input id="Oct" type='checkbox' value="Oct" onchange='filterMonth(this.value)'>October</label>
+         <br>
+         <label><input id="Nov" type='checkbox' value="Nov" onchange='filterMonth(this.value)'>November</label>
+         <br>
+         <label><input id="Dec" type='checkbox' value="Dec" onchange='filterMonth(this.value)'>December</label>
+         <br>
+         <!-- Slider for the year filter -->
+         <h2>Year:</h2>
+         <div id="year" class="slider-range"></div>
+         <input type="text" id="yearvalue">
+      </div>
+   </div>
 </body>
 </html>
-
