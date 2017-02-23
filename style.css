@@ -46,7 +46,7 @@ div {
 
 #visualization {
     width: 920px;
-    height: 975px;
+    height: 1100px;
     float: left;
     border-top: 0;
     text-align: center;
@@ -55,7 +55,7 @@ div {
 
 #controls {
     width: 276px;
-    height: 975px;
+    height: 1100px;
     float: right;
 }
 
