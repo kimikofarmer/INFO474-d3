@@ -38,7 +38,7 @@ d3.csv("data.csv", function(error, students) {
 });
 
 //Save for when I have more ordinal data
-//var col = d3.scaleOrdinal(d3.schemeCategory10);
+var col = d3.scaleOrdinal(d3.schemeCategory10);
 
 //Initialize scatterplot
 
@@ -48,9 +48,9 @@ var chart1 = d3.select(".chart1")
     .append("g")
     .attr("transform", "translate(" + margin1.left + "," + margin1.top + ")");
 
-/*var tooltip = d3.select("body").append("div")
+var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("opacity", 0); */
+    .style("opacity", 0); 
 
 //Scale scatterplot axes 
 var x1 = d3.scaleLinear()
@@ -114,8 +114,8 @@ function drawVis(dataset) { //draw the circiles initially and on each interactio
         .attr("cy", function(d) { return y1(d.spending);  })
         .attr("r", 4)
         .style("stroke", "black")
-     //.style("fill", function(d) { return colLightness(d.vol); })
-         //.style("fill", function(d) { return col(d.Mjob); })
+        //.style("fill", function(d) { return colLightness(d.month); })
+         .style("fill", function(d) { return col(d.month); })
          .style("opacity", 0.5);
 }
 

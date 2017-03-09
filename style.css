@@ -53,6 +53,13 @@ body {
     width: 276px;
     height: 1100px;
     float: right;
+    margin-top: 7.5em;
+    text-align: left;
+}
+
+#controlfilter {
+  margin-left: 0;
+  font-weight: bold;
 }
 
 .bar {
@@ -63,6 +70,7 @@ h2 {
   text-align: left;
   margin-left: 40px;
   margin-bottom: 5px;
+  margin-top: 3em;
 }
 
 #yearvalue {
