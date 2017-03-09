@@ -48,9 +48,9 @@ var chart1 = d3.select(".chart1")
     .append("g")
     .attr("transform", "translate(" + margin1.left + "," + margin1.top + ")");
 
-var tooltip = d3.select("body").append("div")
+/*var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("opacity", 0);
+    .style("opacity", 0); */
 
 //Scale scatterplot axes 
 var x1 = d3.scaleLinear()
@@ -67,14 +67,15 @@ var xAxis1 = d3.axisBottom()
 
 //Add x Axis to the scatterplot
 chart1.append("g")
-    .attr("class", "axis")
     .attr("transform", "translate(0," + h + ")")
-    .call(xAxis1)
-     .append("text")
-      .attr("x", w)
-      .attr("y", -6)
-      .style("text-anchor", "end")
-      //.text("Number of Workers (in Thousands of Persons");
+    .call(xAxis1);
+
+chart1.append("text")
+  .attr("transform",
+            "translate(" + (width1/2) + " ," + 
+                           (h + margin1.top + 15) + ")")
+      .style("text-anchor", "middle")
+      .text("Amount of Alcohol Sold (in Millions of Dollars)");
 
 //Add y Axis to the scatterplot
 var yAxis1 = d3.axisLeft()
@@ -82,14 +83,16 @@ var yAxis1 = d3.axisLeft()
     .scale(y1);
 
 chart1.append("g")
-   .attr("class", "axis")
-   .call(yAxis1)
-      .append("text")
+   .call(yAxis1);
+
+ chart1.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "1em")
-      .style("text-anchor", "end")
-      //.text("Alcohol Sales (in Millions of Dollars");
+      .attr("y", 0 - margin1.left - 5)
+      .attr("x",0 - (height1 / 2) + 20)
+      .attr("dy", "0em")
+      .style("text-anchor", "middle")
+      .text("Number of Workers in Drinking Establishments (in Thousands of People)");       
+
 
 
 //Draw circles for the scatterplot
@@ -99,16 +102,16 @@ function drawVis(dataset) { //draw the circiles initially and on each interactio
      .data(dataset);
 
   circle
-        .attr("cx", function(d) { return x1(d.spending);  })
-        .attr("cy", function(d) { return y1(d.workerusa);  });
+        .attr("cx", function(d) { return x1(d.workerusa);  })
+        .attr("cy", function(d) { return y1(d.spending);  });
         //.style("fill", function(d) { return col(d.Mjob); });
 
   circle.exit().remove();
 
   //Add circle to the scatterplot
   circle.enter().append("circle")
-        .attr("cx", function(d) { return x1(d.spending);  })
-        .attr("cy", function(d) { return y1(d.workerusa);  })
+        .attr("cx", function(d) { return x1(d.workerusa);  })
+        .attr("cy", function(d) { return y1(d.spending);  })
         .attr("r", 4)
         .style("stroke", "black")
      //.style("fill", function(d) { return colLightness(d.vol); })
@@ -236,7 +239,7 @@ y3 = d3.scaleLinear().range([height2, 0]);
 
 var xAxis2 = d3.axisBottom(x2),
 xAxis3 = d3.axisBottom(x3),
-yAxis2 = d3.axisLeft(y2);
+yAxis2 = d3.axisLeft(y2).ticks(8);
 
 //Brush feature
 var brush = d3.brushX()
@@ -298,10 +301,25 @@ d3.csv("data.csv", type, function(error, data) {
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis2);
+
+    focus.append("text")             
+      .attr("transform",
+            "translate(" + (width/2) + " ," + 
+                           (height + margin.top + 15) + ")")
+      .style("text-anchor", "middle")
+      .text("Date");
     
     focus.append("g")
     .attr("class", "axis axis--y")
     .call(yAxis2);
+
+   focus.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left - 5)
+      .attr("x",0 - (height / 2))
+      .attr("dy", "0em")
+      .style("text-anchor", "middle")
+      .text("Amount of Alcohol Sold (in Millions of Dollars)");   
     
     context.append("path")
     .datum(data)

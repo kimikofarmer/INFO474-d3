@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<head>
+   <title>INFO 474: Assignment 3</title>
+</head>
 <body>
    <link href="style.css" rel="stylesheet">
    <script src="https://d3js.org/d3.v4.min.js"></script>
    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
      <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
      <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
    <div id="layout">
-      <div id="title">
-         <p> Alcohol Sales and Workers in the US </p>
-      </div>
       <div id="visualization">
+         <h2>Alcohol Sales and Employees in Drinking Establishments in the US</h2>
          <svg class="chart1" width="800" height="500"></svg>
          <hr>
+         <h2>Alcohol Sales Over Time</h2>
          <svg class = "chart2" width="800" height="500"></svg>
          <script src="script.js"></script>
       </div>
       <div id="controls">
-         <h1>Filters</h1>
+         <h2>Filters</h2>
          <!--check list for the month filter-->
-         <h2><label for="type">Month:</label></h2>
+         <h3><label for="type">Month:</label></h3>
          <label><input id="all" type='checkbox' value="all" checked onchange='filterMonth(this.value)'>All</label>
          <br>
          <label><input id="Jan" type='checkbox' value="Jan" onchange='filterMonth(this.value)'>January</label>
@@ -47,7 +50,7 @@
          <label><input id="Dec" type='checkbox' value="Dec" onchange='filterMonth(this.value)'>December</label>
          <br>
          <!-- Slider for the year filter -->
-         <h2>Year:</h2>
+         <h3>Year:</h3>
          <div id="year" class="slider-range"></div>
          <input type="text" id="yearvalue">
       </div>

@@ -23,10 +23,6 @@ body {
     pointer-events: all;
 }
 
-div {
-    border: 1px solid black;
-}
-
 #layout {
     width: 1200px;
     height: 680;
@@ -46,7 +42,7 @@ div {
 
 #visualization {
     width: 920px;
-    height: 975px;
+    height: 1100px;
     float: left;
     border-top: 0;
     text-align: center;
@@ -55,16 +51,12 @@ div {
 
 #controls {
     width: 276px;
-    height: 975px;
+    height: 1100px;
     float: right;
 }
 
 .bar {
     fill: steelblue;
-}
-
-h1 {
-  text-decoration: underline;
 }
 
 h2 {
@@ -78,4 +70,8 @@ h2 {
   color:#f6931f;
   font-weight:bold;
   text-align: center;
+}
+
+.chart1, .chart2 {
+  padding-left: 20px;
 }
