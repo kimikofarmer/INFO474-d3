@@ -4,7 +4,7 @@
    <title>INFO 474: Assignment 3</title>
 </head>
 <body>
-   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
    <link href="style.css" rel="stylesheet">
    <script src="https://d3js.org/d3.v4.min.js"></script>
    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
@@ -13,45 +13,46 @@
 
    <div id="layout">
       <div id="visualization">
-         <h1>United States Alcohol Numbers</h1>
-         <p>Description Description Description Description Description Description Description Description 
-         Description Description Description Description Description Description Description </p>
-         <h2>Alcohol Sales and Employees in Drinking Establishments in the US</h2>
-         <svg class="chart1" width="800" height="500"></svg>
-         <hr>
          <h2>Alcohol Sales Over Time</h2>
-         <svg class = "chart2" width="800" height="500"></svg>
+         <svg class="chart2" width="800" height="500"></svg>
+         <hr>
+         <h2>Alcohol Sales and Employees in Drinking Establishments in the US</h2>
+         <svg class = "chart1" width="800" height="500"></svg>
          <script src="script.js"></script>
       </div>
       <div id="controls">
+         <div id="intro">
+         <h1>United States Alcohol Numbers</h1>
+         <p class ="desc">Currently, the US only ranks 48th in the world in alcohol consumption, but that doesn't stop it from continuing to be a huge industry in the states! Explore the trend of increasing alcohol sales over the past several decades and view the dips and peaks of sales. Or are you potentially interested in getting your Mixology degree for a night job? View the scatterplot and see if the increase in alcohol sales tends to result in more US workers working in drinking establishments based on historical data. Filter by month or year to view additional patterns.</p>
+         </div>
          <h2 id="controlfilter">Filter Data</h2>
          <!--check list for the month filter-->
          <h3><label for="type">Month:</label></h3>
          <label><input id="all" type='checkbox' value="all" checked onchange='filterMonth(this.value)'>All</label>
          <br>
-         <label><input id="Jan" type='checkbox' value="Jan" onchange='filterMonth(this.value)'>January</label>
+         <div class="box jan"></div><label><input id="Jan" type='checkbox' value="Jan" onchange='filterMonth(this.value)'>January</label>
          <br>
-         <label><input id="Feb" type='checkbox' value="Feb" onchange='filterMonth(this.value)'>February</label>
+         <div class="box clear feb"></div><label><input id="Feb" type='checkbox' value="Feb" onchange='filterMonth(this.value)'>February</label>
          <br>
-         <label><input id="Mar" type='checkbox' value="Mar" onchange='filterMonth(this.value)'>March</label>
+         <div class="box clear mar"></div><label><input id="Mar" type='checkbox' value="Mar" onchange='filterMonth(this.value)'>March</label>
          <br>
-         <label><input id="Apr" type='checkbox' value="Apr" onchange='filterMonth(this.value)'>April</label>
+         <div class="box clear apr"></div><label><input id="Apr" type='checkbox' value="Apr" onchange='filterMonth(this.value)'>April</label>
          <br>
-         <label><input id="May" type='checkbox' value="May" onchange='filterMonth(this.value)'>May</label>
+         <div class="box clear may"></div><label><input id="May" type='checkbox' value="May" onchange='filterMonth(this.value)'>May</label>
          <br>
-         <label><input id="Jun" type='checkbox' value="Jun" onchange='filterMonth(this.value)'>June</label>
+         <div class="box clear jun"></div><label><input id="Jun" type='checkbox' value="Jun" onchange='filterMonth(this.value)'>June</label>
          <br>
-         <label><input id="Jul" type='checkbox' value="Jul" onchange='filterMonth(this.value)'>July</label>
+         <div class="box clear jul"></div><label><input id="Jul" type='checkbox' value="Jul" onchange='filterMonth(this.value)'>July</label>
          <br>
-         <label><input id="Aug" type='checkbox' value="Aug" onchange='filterMonth(this.value)'>August</label>
+         <div class="box clear aug"></div><label><input id="Aug" type='checkbox' value="Aug" onchange='filterMonth(this.value)'>August</label>
          <br>
-         <label><input id="Sep" type='checkbox' value="Sep" onchange='filterMonth(this.value)'>September</label>
+         <div class="box clear sep"></div><label><input id="Sep" type='checkbox' value="Sep" onchange='filterMonth(this.value)'>September</label>
          <br>
-         <label><input id="Oct" type='checkbox' value="Oct" onchange='filterMonth(this.value)'>October</label>
+         <div class="box clear oct"></div><label><input id="Oct" type='checkbox' value="Oct" onchange='filterMonth(this.value)'>October</label>
          <br>
-         <label><input id="Nov" type='checkbox' value="Nov" onchange='filterMonth(this.value)'>November</label>
+         <div class="box clear nov"></div><label><input id="Nov" type='checkbox' value="Nov" onchange='filterMonth(this.value)'>November</label>
          <br>
-         <label><input id="Dec" type='checkbox' value="Dec" onchange='filterMonth(this.value)'>December</label>
+         <div class="box clear dec"></div><label><input id="Dec" type='checkbox' value="Dec" onchange='filterMonth(this.value)'>December</label>
          <br>
          <!-- Slider for the year filter -->
          <h3>Year:</h3>

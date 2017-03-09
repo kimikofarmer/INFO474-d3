@@ -38,8 +38,9 @@ d3.csv("data.csv", function(error, students) {
 });
 
 //Save for when I have more ordinal data
-var col = d3.scaleOrdinal(d3.schemeCategory20);
-
+var col = d3.scaleOrdinal()
+      .domain(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+      .range(["#800000", "#FF0000" , "#800080", "#FF00FF", "#008000", "#00FF00", "#808000", "#FFFF00", "#000080", "#0000FF", "#008080", "#00FFFF"]);
 //Initialize scatterplot
 
 var chart1 = d3.select(".chart1")
@@ -91,6 +92,7 @@ chart1.append("g")
       .attr("x",0 - (height1 / 2) + 20)
       .attr("dy", "0em")
       .style("text-anchor", "middle")
+      .attr("class", "axistitle")
       .text("Number of Workers in Drinking Establishments (in Thousands of People)");       
 
 
@@ -100,11 +102,11 @@ function drawVis(dataset) { //draw the circiles initially and on each interactio
 
   var circle = chart1.selectAll("circle")
      .data(dataset);
-
+  
   circle
         .attr("cx", function(d) { return x1(d.workerusa);  })
-        .attr("cy", function(d) { return y1(d.spending);  });
-        //.style("fill", function(d) { return col(d.Mjob); });
+        .attr("cy", function(d) { return y1(d.spending);  })
+        .style("fill", function(d) { return col(d.month); });
 
   circle.exit().remove();
 
@@ -116,7 +118,7 @@ function drawVis(dataset) { //draw the circiles initially and on each interactio
         .style("stroke", "black")
         //.style("fill", function(d) { return colLightness(d.month); })
          .style("fill", function(d) { return col(d.month); })
-         .style("opacity", 0.75)
+         .style("opacity", 0.6)
          .on("mouseover", function(d) {
             d3.select(this).attr("r", 7);
             tooltip.transition()

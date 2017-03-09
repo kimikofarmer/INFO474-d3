@@ -1,10 +1,15 @@
 body {
-    font: 12px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .axis line, .axis text {
-    font: 12px sans-serif;
+    font-size: 11px;
+    font-family: 'Raleway', sans-serif;
+}
+
+text.axistitle {
+  font-size: 11px;
 }
 
 .axis path {
@@ -20,7 +25,7 @@ body {
 
 .line {
   fill: none;
-  stroke: steelblue;
+  stroke: black;
   stroke-width: 2px;
   clip-path: url(#clip);
 }
@@ -68,17 +73,22 @@ body {
 #controlfilter {
   margin-left: 0;
   font-weight: bold;
+  margin-top: 6em;
 }
 
 .bar {
     fill: steelblue;
 }
 
+h1, .desc {
+  text-align: center;
+}
+
 h2 {
   text-align: left;
   margin-left: 40px;
   margin-bottom: 5px;
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 #yearvalue {
@@ -103,4 +113,76 @@ div.tooltip {
   border: 0px;      
   border-radius: 8px;           
   pointer-events: none;         
+}
+
+.box {
+  float: left;
+  width: 15px;
+  height: 15px;
+  border: 1px solid black;
+}
+
+.jan {
+  background: #800000;
+}
+
+.feb {
+  background: #FF0000;
+}
+
+.mar {
+  background: #800080;
+}
+
+.apr {
+  background: #FF00FF;
+}
+
+.may {
+  background: #008000;
+}
+
+.jun {
+  background: #00FF00;
+}
+
+.jul {
+  background: #808000;
+}
+
+.aug {
+  background: #FFFF00;
+}
+
+.sep {
+  background: #000080;
+}
+
+.oct {
+  background: #0000FF;
+}
+
+.nov {
+  background: #008080;
+}
+
+.dec {
+  background: #00FFFF;
+}
+
+label, .clear, .slider-range {
+  clear: left;
+}
+
+input {
+  margin-bottom: 15px;
+}
+
+#all {
+  margin-left: 20px;
+}
+
+#intro {
+  padding: 1em;
+  border: 1px solid black;
 }
