@@ -1,9 +1,9 @@
 body {
-    font: 11px sans-serif;
+    font: 12px sans-serif;
 }
 
 .axis line, .axis text {
-    font: 11px sans-serif;
+    font: 12px sans-serif;
 }
 
 .axis path {
@@ -46,7 +46,7 @@ div {
 
 #visualization {
     width: 920px;
-    height: 1100px;
+    height: 975px;
     float: left;
     border-top: 0;
     text-align: center;
@@ -55,7 +55,7 @@ div {
 
 #controls {
     width: 276px;
-    height: 1100px;
+    height: 975px;
     float: right;
 }
 
