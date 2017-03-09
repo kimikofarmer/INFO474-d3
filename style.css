@@ -1,5 +1,6 @@
 body {
-    font: 12px sans-serif;
+    font: 12px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .axis line, .axis text {
@@ -15,6 +16,13 @@ body {
 .area {
     fill: steelblue;
     clip-path: url(#clip);
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+  clip-path: url(#clip);
 }
 
 .zoom {
@@ -82,4 +90,17 @@ h2 {
 
 .chart1, .chart2 {
   padding-left: 20px;
+}
+
+div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  width: 120px;                  
+  height: 110px;                 
+  padding: 2px;             
+  font: 12px sans-serif;        
+  background: lightsteelblue;   
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;         
 }
