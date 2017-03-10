@@ -84,6 +84,7 @@ var yAxis1 = d3.axisLeft()
     .scale(y1);
 
 chart1.append("g")
+   .attr("class", "yaxis")
    .call(yAxis1);
 
  chart1.append("text")
@@ -211,7 +212,16 @@ $(function() {
     });
 
     $("#yearvalue").val($("#year").slider("values", 0) + " - " + $("#year").slider("values", 1));
-}); 
+});
+
+/* Tried to implement a rescale axis
+function rescale() {
+            y1.domain([0,])  // change scale to 0, to between 100 more than max y value
+            vis.select(".yaxis")
+                    .transition().duration(1500).ease("sin-in-out")  // https://github.com/mbostock/d3/wiki/Transitions#wiki-d3_ease
+                    .call(yAxis1);
+        } 
+*/
 
 //Filter based on the years chosen on the slider
 function filterSliders(attr, values) {
@@ -401,3 +411,17 @@ function type(d) {
 }
 
 
+//Functions associated with the buttons and different views
+$(function() {
+  $(".scatterplot").hide();
+})
+
+$("#linebutton").click(function(){
+    $(".scatterplot").hide();
+    $(".linegraph").show();
+});
+
+$("#scatterbutton").click(function(){
+    $(".linegraph").hide();
+    $(".scatterplot").show();
+});

@@ -13,51 +13,58 @@
 
    <div id="layout">
       <div id="visualization">
-         <h2>Alcohol Sales Over Time</h2>
-         <svg class="chart2" width="800" height="500"></svg>
-         <hr>
-         <h2>Alcohol Sales and Employees in Drinking Establishments in the US</h2>
-         <svg class = "chart1" width="800" height="500"></svg>
+         <button type="button" id="linebutton">Alcohol Sales Over Time</button>
+         <button type="button" id="scatterbutton">Alcohol Sales and Workers</button>
+         <div class = "linegraph">
+            <h2>Alcohol Sales Over Time</h2>
+            <svg class="chart2" width="800" height="500"></svg>
+         </div>
+         <div class = "scatterplot">
+            <h2>Alcohol Sales and Employees in Drinking Establishments in the US</h2>
+            <svg class = "chart1" width="800" height="500"></svg>
+         </div>
          <script src="script.js"></script>
       </div>
       <div id="controls">
-         <div id="intro">
+         <div id="intro" class="linegraph">
          <h1>United States Alcohol Numbers</h1>
-         <p class ="desc">Currently, the US only ranks 48th in the world in alcohol consumption, but that doesn't stop it from continuing to be a huge industry in the states! Explore the trend of increasing alcohol sales over the past several decades and view the dips and peaks of sales. Or are you potentially interested in getting your Mixology degree for a night job? View the scatterplot and see if the increase in alcohol sales tends to result in more US workers working in drinking establishments based on historical data. Filter by month or year to view additional patterns.</p>
+         <p class ="desc">Currently, the US only ranks 48th in the world in alcohol consumption, but that doesn't stop it from continuing to be a huge industry in the states! Explore the trend of increasing alcohol sales over the past several decades and view the dips and peaks of sales. Or are you potentially interested in getting your Mixology degree for a night job? View the scatterplot and see if the increase in alcohol sales tends to result in more US workers working in drinking establishments based on historical data. Filter by month or year to view additional patterns. <br /><br />Click the buttons above to switch visualizations.</p>
          </div>
-         <h2 id="controlfilter">Filter Data</h2>
-         <!--check list for the month filter-->
-         <h3><label for="type">Month:</label></h3>
-         <label><input id="all" type='checkbox' value="all" checked onchange='filterMonth(this.value)'>All</label>
-         <br>
-         <div class="box jan"></div><label><input id="Jan" type='checkbox' value="Jan" onchange='filterMonth(this.value)'>January</label>
-         <br>
-         <div class="box clear feb"></div><label><input id="Feb" type='checkbox' value="Feb" onchange='filterMonth(this.value)'>February</label>
-         <br>
-         <div class="box clear mar"></div><label><input id="Mar" type='checkbox' value="Mar" onchange='filterMonth(this.value)'>March</label>
-         <br>
-         <div class="box clear apr"></div><label><input id="Apr" type='checkbox' value="Apr" onchange='filterMonth(this.value)'>April</label>
-         <br>
-         <div class="box clear may"></div><label><input id="May" type='checkbox' value="May" onchange='filterMonth(this.value)'>May</label>
-         <br>
-         <div class="box clear jun"></div><label><input id="Jun" type='checkbox' value="Jun" onchange='filterMonth(this.value)'>June</label>
-         <br>
-         <div class="box clear jul"></div><label><input id="Jul" type='checkbox' value="Jul" onchange='filterMonth(this.value)'>July</label>
-         <br>
-         <div class="box clear aug"></div><label><input id="Aug" type='checkbox' value="Aug" onchange='filterMonth(this.value)'>August</label>
-         <br>
-         <div class="box clear sep"></div><label><input id="Sep" type='checkbox' value="Sep" onchange='filterMonth(this.value)'>September</label>
-         <br>
-         <div class="box clear oct"></div><label><input id="Oct" type='checkbox' value="Oct" onchange='filterMonth(this.value)'>October</label>
-         <br>
-         <div class="box clear nov"></div><label><input id="Nov" type='checkbox' value="Nov" onchange='filterMonth(this.value)'>November</label>
-         <br>
-         <div class="box clear dec"></div><label><input id="Dec" type='checkbox' value="Dec" onchange='filterMonth(this.value)'>December</label>
-         <br>
-         <!-- Slider for the year filter -->
-         <h3>Year:</h3>
-         <div id="year" class="slider-range"></div>
-         <input type="text" id="yearvalue">
+         <div class="scatterplot">
+            <h2 id="controlfilter">Filter Data</h2>
+            <!--check list for the month filter-->
+            <h3><label for="type">Month:</label></h3>
+            <label><input id="all" type='checkbox' value="all" checked onchange='filterMonth(this.value)'>All</label>
+            <br>
+            <div class="box jan"></div><label><input id="Jan" type='checkbox' value="Jan" onchange='filterMonth(this.value)'>January</label>
+            <br>
+            <div class="box clear feb"></div><label><input id="Feb" type='checkbox' value="Feb" onchange='filterMonth(this.value)'>February</label>
+            <br>
+            <div class="box clear mar"></div><label><input id="Mar" type='checkbox' value="Mar" onchange='filterMonth(this.value)'>March</label>
+            <br>
+            <div class="box clear apr"></div><label><input id="Apr" type='checkbox' value="Apr" onchange='filterMonth(this.value)'>April</label>
+            <br>
+            <div class="box clear may"></div><label><input id="May" type='checkbox' value="May" onchange='filterMonth(this.value)'>May</label>
+            <br>
+            <div class="box clear jun"></div><label><input id="Jun" type='checkbox' value="Jun" onchange='filterMonth(this.value)'>June</label>
+            <br>
+            <div class="box clear jul"></div><label><input id="Jul" type='checkbox' value="Jul" onchange='filterMonth(this.value)'>July</label>
+            <br>
+            <div class="box clear aug"></div><label><input id="Aug" type='checkbox' value="Aug" onchange='filterMonth(this.value)'>August</label>
+            <br>
+            <div class="box clear sep"></div><label><input id="Sep" type='checkbox' value="Sep" onchange='filterMonth(this.value)'>September</label>
+            <br>
+            <div class="box clear oct"></div><label><input id="Oct" type='checkbox' value="Oct" onchange='filterMonth(this.value)'>October</label>
+            <br>
+            <div class="box clear nov"></div><label><input id="Nov" type='checkbox' value="Nov" onchange='filterMonth(this.value)'>November</label>
+            <br>
+            <div class="box clear dec"></div><label><input id="Dec" type='checkbox' value="Dec" onchange='filterMonth(this.value)'>December</label>
+            <br>
+            <!-- Slider for the year filter -->
+            <h3>Year:</h3>
+            <div id="year" class="slider-range"></div>
+            <input type="text" id="yearvalue">
+         </div>
       </div>
    </div>
 </body>

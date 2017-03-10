@@ -18,11 +18,6 @@ text.axistitle {
     shape-rendering: crispEdges;
 }
 
-.area {
-    fill: steelblue;
-    clip-path: url(#clip);
-}
-
 .line {
   fill: none;
   stroke: black;
@@ -38,7 +33,7 @@ text.axistitle {
 
 #layout {
     width: 1200px;
-    height: 680;
+    height: 600;
 }
 
 #title, #controls, #infobar {
@@ -55,7 +50,7 @@ text.axistitle {
 
 #visualization {
     width: 920px;
-    height: 1100px;
+    height: 600px;
     float: left;
     border-top: 0;
     text-align: center;
@@ -64,20 +59,14 @@ text.axistitle {
 
 #controls {
     width: 276px;
-    height: 1100px;
+    height: 600px;
     float: right;
-    margin-top: 7.5em;
     text-align: left;
 }
 
 #controlfilter {
   margin-left: 0;
   font-weight: bold;
-  margin-top: 6em;
-}
-
-.bar {
-    fill: steelblue;
 }
 
 h1, .desc {
@@ -96,6 +85,7 @@ h2 {
   color:#f6931f;
   font-weight:bold;
   text-align: center;
+  margin-left: 25%;
 }
 
 .chart1, .chart2 {
@@ -185,4 +175,15 @@ input {
 #intro {
   padding: 1em;
   border: 1px solid black;
+}
+
+button {
+    background-color: gray; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
